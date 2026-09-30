@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Adam Mikhail | 3D Designer</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0d10;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11, 13, 16, 0.95);
+      border-bottom: 1px solid #252a31;
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .logo span {
+      color: #f4b72f;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #b8bec7;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #f4b72f;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 85vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 50px;
+      padding: 80px 0;
+    }
+
+    .hero-small {
+      color: #f4b72f;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(50px, 7vw, 90px);
+      line-height: 0.95;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #f4b72f;
+    }
+
+    .hero p {
+      max-width: 550px;
+      color: #aeb5bf;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 7px;
+      font-weight: bold;
+      border: 1px solid #f4b72f;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #f4b72f;
+      color: #111;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.85;
+    }
+
+    .btn-outline:hover {
+      background: #f4b72f;
+      color: #111;
+    }
+
+    /* HERO IMAGE */
+
+    .hero-image {
+      height: 500px;
+      border-radius: 20px;
+      border: 1px solid #393f47;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        linear-gradient(rgba(20, 20, 20, 0.5), rgba(10, 10, 10, 0.8)),
+        #1b2027;
+      color: #9299a3;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .hero-image p {
+      color: #9299a3;
+      font-size: 14px;
+    }
+
+    /* SECTION */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      color: #f4b72f;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 45px;
+      margin-bottom: 40px;
+    }
+
+    /* PROJECTS */
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .project-card {
+      background: #13171c;
+      border: 1px solid #292f36;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: #f4b72f;
+    }
+
+    .project-image {
+      height: 300px;
+      background: #20252c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #848b95;
+      text-align: center;
+      padding: 25px;
+    }
+
+    .project-info {
+      padding: 22px;
+    }
+
+    .project-category {
+      color: #f4b72f;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .project-info h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .project-info p {
+      color: #9da4ae;
+    }
+
+    /* ABOUT */
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .about p {
+      color: #aeb5bf;
+      margin-bottom: 20px;
+      font-size: 17px;
+    }
+
+    /* SKILLS */
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      padding: 10px 15px;
+      background: #13171c;
+      border: 1px solid #30363e;
+      border-radius: 8px;
+      color: #d5d9df;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      padding: 50px;
+      border: 1px solid #4e3d1c;
+      border-radius: 15px;
+      background: #15130f;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .contact-box p {
+      color: #aeb5bf;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid #252a31;
+      padding: 30px 0;
+      color: #777f89;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 60px 0;
+      }
+
+      .hero-image {
+        height: 350px;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <header>
+    <div class="container">
+      <nav>
+
+        <div class="logo">
+          ADAM <span>MIKHAIL</span>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+
+  <section id="home">
+
+    <div class="container">
+
+      <div class="hero">
+
+        <div>
+
+          <div class="hero-small">
+            3D Designer · Visualisation
+          </div>
+
+          <h1>
+            Making Ideas<br>
+            Look <span>Real.</span>
+          </h1>
+
+          <p>
+            Hi, I'm Adam Mikhail — a 3D Designer focused on
+            3D modeling, event & exhibition booth design,
+            visualization and game assets.
+          </p>
+
+          <div class="buttons">
+
+            <a href="#projects" class="btn btn-primary">
+              View My Work
+            </a>
+
+            <a href="#contact" class="btn btn-outline">
+              Contact Me
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-image">
+
+          <p>
+            YOUR BEST 3D RENDER<br><br>
+            Replace this area with your<br>
+            favourite booth / 3D render.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <div class="section-label">
+        Portfolio
+      </div>
+
+      <h2 class="section-title">
+        Selected Projects
+      </h2>
+
+
+      <div class="projects">
+
+
+        <div class="project-card">
+
+          <div class="project-image">
+
+            YOUR BOOTH RENDER
+
+          </div>
+
+          <div class="project-info">
+
+            <div class="project-category">
+              Event Design · 3D Visualization
+            </div>
+
+            <h3>
+              Exhibition Booth
+            </h3>
+
+            <p>
+              3D booth concept including spatial
+              design, materials, layout and visualization.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-card">
+
+          <div class="project-image">
+
+            YOUR EVENT RENDER
+
+          </div>
+
+          <div class="project-info">
+
+            <div class="project-category">
+              Event Design · Environment
+            </div>
+
+            <h3>
+              Event Entrance & Photospot
+            </h3>
+
+            <p>
+              Creative event environment designed
+              to create an engaging visitor experience.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-card">
+
+          <div class="project-image">
+
+            YOUR 3D MODEL
+
+          </div>
+
+          <div class="project-info">
+
+            <div class="project-category">
+              3D Modeling · Game Asset
+            </div>
+
+            <h3>
+              3D Asset
+            </h3>
+
+            <p>
+              Detailed 3D modeling project showcasing
+              modeling and presentation skills.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-card">
+
+          <div class="project-image">
+
+            YOUR GAME PROJECT
+
+          </div>
+
+          <div class="project-info">
+
+            <div class="project-category">
+              Game Art · Environment
+            </div>
+
+            <h3>
+              Game Environment
+            </h3>
+
+            <p>
+              Environment design and 3D assets created
+              for a personal game project.
+            </p>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <div class="about">
+
+
+        <div>
+
+          <div class="section-label">
+            About Me
+          </div>
+
+          <h2 class="section-title">
+            Designing in 3D,<br>
+            Thinking in Detail.
+          </h2>
+
+          <p>
+            I'm a 3D Designer with experience in
+            event and exhibition design, 3D modeling
+            and visualization.
+          </p>
+
+          <p>
+            I enjoy transforming ideas into detailed
+            and visually appealing 3D designs.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <div class="section-label">
+            Software
+          </div>
+
+          <h2 class="section-title">
+            My Toolkit
+          </h2>
+
+          <div class="skills">
+
+            <div class="skill">Autodesk Maya</div>
+            <div class="skill">Blender</div>
+            <div class="skill">Substance Painter</div>
+            <div class="skill">Unity</div>
+            <div class="skill">Unreal Engine</div>
+            <div class="skill">Photoshop</div>
+            <div class="skill">Illustrator</div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="contact-box">
+
+        <div>
+
+          <div class="section-label">
+            Contact
+          </div>
+
+          <h2>
+            Let's Work Together.
+          </h2>
+
+          <p>
+            Interested in working with me?
+            Feel free to get in touch.
+          </p>
+
+        </div>
+
+        <a
+          href="mailto:YOUR-EMAIL@example.com"
+          class="btn btn-primary"
+        >
+          Email Me
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container">
+
+      © 2026 Adam Mikhail · 3D Designer
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
