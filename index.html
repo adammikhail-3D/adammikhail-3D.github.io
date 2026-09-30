@@ -316,6 +316,26 @@
         font-size: 14px;
       }
     }
+.hero-slider {
+  position: relative;
+  width: 100%;
+}
+
+.hero-slider .slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-slider .slide.active {
+  opacity: 1;
+}
+    
   </style>
 </head>
 
@@ -385,10 +405,14 @@
 
         <div class="hero-image">
 
-          <img src="adadads.png"
-     alt="Adam Mikhail 3D Render"
-     style="width:200%; height:auto; object-fit:contain; display:block; border-radius:0;"
+        <div class="hero-slider">
 
+  <img src="adadads.png" class="slide active" alt="Adam Mikhail 3D Render">
+  <img src="b.png" class="slide" alt="Adam Mikhail 3D Render">
+  <img src="c.png" class="slide" alt="Adam Mikhail 3D Render">
+  <img src="d.png" class="slide" alt="Adam Mikhail 3D Render">
+  <img src="f.png" class="slide" alt="Adam Mikhail 3D Render">  
+     
         </div>
 
       </div>
@@ -651,6 +675,18 @@
     </div>
 
   </footer>
+<script>
+  const slides = document.querySelectorAll(".hero-slider .slide");
+  let currentSlide = 0;
 
+  setInterval(() => {
+    slides[currentSlide].classList.remove("active");
+
+    currentSlide = (currentSlide + 1) % slides.length;
+
+    slides[currentSlide].classList.add("active");
+  }, 4000);
+</script>
+  
 </body>
 </html>
