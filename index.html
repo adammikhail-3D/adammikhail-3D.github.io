@@ -676,16 +676,26 @@
 
   </footer>
 <script>
-  const slides = document.querySelectorAll(".hero-slider .slide");
-  let currentSlide = 0;
+  window.addEventListener("DOMContentLoaded", function () {
 
-  setInterval(() => {
-    slides[currentSlide].classList.remove("active");
+    const slides = document.querySelectorAll(".hero-slider .slide");
+    let currentSlide = 0;
 
-    currentSlide = (currentSlide + 1) % slides.length;
+    setInterval(function () {
 
-    slides[currentSlide].classList.add("active");
-  }, 4000);
+      slides[currentSlide].classList.remove("active");
+
+      currentSlide++;
+
+      if (currentSlide >= slides.length) {
+        currentSlide = 0;
+      }
+
+      slides[currentSlide].classList.add("active");
+
+    }, 4000);
+
+  });
 </script>
   
 </body>
